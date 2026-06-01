@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const publicacionesController = require('../controllers/publicacion.controllers')
+const publicacionesController = require('../controllers/publicaciones.controllers')
 const validarPublicacion = require('../middlewares/validarPublicacion')
 const validarPublicacionId = require('../middlewares/validarPublicacionId')
 const router = Router()
