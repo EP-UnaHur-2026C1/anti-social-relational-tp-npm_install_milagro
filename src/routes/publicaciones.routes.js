@@ -5,9 +5,9 @@ const validarPublicacionId = require('../middlewares/validarPublicacionId')
 const router = Router()
 
 router.get('/', publicacionesController.obtenerPublicaciones)
-router.get('/:id', validarPublicacionId, obtenerPublicacion)
+router.get('/:id', validarPublicacionId, publicacionesController.obtenerPublicacion)
 router.post('/', validarPublicacion, publicacionesController.crearPublicacion)
-router.put('/:id', validarPublicacionId, validarProducto, publicacionesController.editarPublicacion)
+router.put('/:id', validarPublicacionId, validarPublicacion, publicacionesController.editarPublicacion)
 router.delete('/:id', validarPublicacionId, publicacionesController.eliminarPublicacion)
 
 
