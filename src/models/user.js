@@ -24,13 +24,16 @@ module.exports = (sequelize, DataTypes) => {
       })
     }
   }
-  User.init({
-    nickname: DataTypes.STRING,
-    primaryKey: true,
-    allowNull: false
+    User.init({
+    nickname: {
+      type: DataTypes.STRING,
+      primaryKey: true,
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'User',
   });
+
   return User;
 };

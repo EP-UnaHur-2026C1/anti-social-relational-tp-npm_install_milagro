@@ -6,17 +6,16 @@ require("dotenv").config()
 // Importacion de los routers
 const routerPublicaciones = require('./routes/publicaciones.routes')
 const routerUsuarios = require('./routes/usuarios.routes')
-//const routerEtiqueta = require('./routes/etiquetas.routes')
+const routerEtiqueta = require('./routes/etiquetas.routes')
 
 const PORT = process.env.PORT || 3000
 
 
 app.use(express.json())
 
-//Le agregamos a app los routers con prefijos
-app.use('/publicaciones',  routerPublicaciones)
+app.use('/publicaciones', routerPublicaciones)
 app.use('/usuarios', routerUsuarios)
-//app.use('/etiquetas', routerEtiqueta)
+app.use('/etiquetas', routerEtiqueta)
 
 app.listen(PORT, async () =>{
     await db.sequelize.sync()
