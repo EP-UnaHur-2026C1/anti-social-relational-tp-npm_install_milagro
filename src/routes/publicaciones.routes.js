@@ -1,0 +1,11 @@
+const { Router } = require('express')
+const publicacionesController = require('../controllers/publicacion.controllers')
+const validarPublicacion = require('../middlewares/validarPublicacion')
+const validarPublicacionId = require('../middlewares/validarPublicacionId')
+const router = Router()
+
+router.get('/', publicacionesController.obtenerPublicaciones)
+router.get('/:id', validarPublicacionId, obtenerPublicacion)
+router.post('/', validarPublicacion, publicacionesController.crearPublicacion)
+router.put('/:id', validarPublicacionId, validarProducto, publicacionesController.editarPublicacion)
+router.delete('/:id', validarPublicacionId, publicacionesController.eliminarPublicacion)
