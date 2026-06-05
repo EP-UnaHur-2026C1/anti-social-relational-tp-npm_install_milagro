@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
 const db = require('./models')
+const swaggerUI = require("swagger-ui-express")
+const swaggerFile = require('./swagger-output.json');
 require("dotenv").config()
 
 // Importacion de los routers
@@ -18,6 +20,10 @@ app.use('/publicaciones', routerPublicaciones)
 app.use('/usuarios', routerUsuarios)
 app.use('/etiquetas', routerEtiqueta)
 app.use('/comentarios', routerComentarios)
+
+//Documentacion
+app.use('/docs',  swaggerUI.serve, swaggerUI.setup(swaggerFile))
+
 
 app.listen(PORT, async () =>{
     await db.sequelize.sync()
