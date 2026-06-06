@@ -236,6 +236,49 @@
         }
       }
     },
+    "/publicaciones/{id}/comentarios": {
+      "post": {
+        "tags": [
+          "Publicaciones"
+        ],
+        "summary": "Crea un nuevo comentario en el sistema de la publicacion pasada por ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Comentario creado exitosamente."
+          },
+          "400": {
+            "description": "El body no cumple con los requisitos."
+          },
+          "404": {
+            "description": "Publicacion no encontrada en la Base de datos."
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ComentarioNuevo"
+              }
+            }
+          }
+        }
+      }
+    },
     "/usuarios/": {
       "get": {
         "tags": [
@@ -545,34 +588,6 @@
             "description": "Internal Server Error"
           }
         }
-      },
-      "post": {
-        "tags": [
-          "Comentarios"
-        ],
-        "summary": "Crea un nuevo comentario en el sistema",
-        "description": "",
-        "responses": {
-          "201": {
-            "description": "Comentario creado exitosamente."
-          },
-          "400": {
-            "description": "El body no cumple con los requisitos."
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        },
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ComentarioNuevo"
-              }
-            }
-          }
-        }
       }
     },
     "/comentarios/{id}": {
@@ -735,11 +750,16 @@
           "is_visible": {
             "type": "boolean",
             "example": true
+          },
+          "user_nickname": {
+            "type": "number",
+            "example": 1
           }
         },
         "required": [
           "text",
-          "is_visible"
+          "is_visible",
+          "user_nickname"
         ]
       }
     }

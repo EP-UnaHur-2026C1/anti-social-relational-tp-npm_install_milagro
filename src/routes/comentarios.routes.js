@@ -10,7 +10,6 @@ const router = Router()
 
 router.get('/', comentariosController.obtenerComentarios)
 router.get('/:id', validarComentarioId, comentariosController.obtenerComentario)
-router.post('/', validarComentario, comentariosController.crearComentario)
 router.put('/:id', validarComentarioId, validarComentario, comentariosController.editarComentario)
 router.delete('/:id', validarComentarioId, comentariosController.eliminarComentario)
 

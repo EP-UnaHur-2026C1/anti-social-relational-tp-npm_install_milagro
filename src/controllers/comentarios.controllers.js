@@ -46,8 +46,8 @@ const obtenerComentario =  (req, res) => {
 }
 
 const crearComentario = async (req, res) => {
-    /* #swagger.tags = ['Comentarios']
-        #swagger.summary = 'Crea un nuevo comentario en el sistema'
+    /* #swagger.tags = ['Publicaciones']
+        #swagger.summary = 'Crea un nuevo comentario en el sistema de la publicacion pasada por ID'
         #swagger.requestBody = {
             required: true,
             content: {
@@ -61,16 +61,24 @@ const crearComentario = async (req, res) => {
         #swagger.responses[201] = {
             description: 'Comentario creado exitosamente.'
         }
+        #swagger.responses[404] = {
+            description: 'Publicacion no encontrada en la Base de datos.'
+        }
         #swagger.responses[400] = {
             description: 'El body no cumple con los requisitos.'
         }
     */
 
+        //Id de publicacion
+        const {id} = req.publicacion
+
     
     try {
         const comentario = await Comment.create({
             text: req.body.text,
-            is_visible: req.body.is_visible
+            is_visible: req.body.is_visible,
+            user_nickname:  req.body.user_nickname,
+            post_id: id
         })
 
         res.status(201).json(comentario)

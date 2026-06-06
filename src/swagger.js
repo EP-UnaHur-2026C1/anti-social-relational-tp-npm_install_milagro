@@ -38,7 +38,8 @@ const doc = {
             },
             ComentarioNuevo: {
                 $text: "Este es un comentario",
-                $is_visible: true
+                $is_visible: true,
+                $user_nickname: 1
             }
         }
     }
