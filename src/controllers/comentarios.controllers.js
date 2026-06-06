@@ -1,6 +1,14 @@
 const { Comment } = require('../models')
 
 const obtenerComentarios = async (req, res) => {
+    /* #swagger.tags = ['Comentarios']
+        #swagger.summary = 'Obtener todos los comentarios del sistema'
+        #swagger.responses[200] = {
+            description: 'Comentarios retornadas exitosamente.'
+        }
+    */
+
+
     try {
         const comentarios = await Comment.findAll()
         res.status(200).json(comentarios)
@@ -10,6 +18,23 @@ const obtenerComentarios = async (req, res) => {
 }
 
 const obtenerComentario =  (req, res) => {
+    /* #swagger.tags = ['Comentarios']
+        #swagger.summary = 'Obtiene los detalles de un comentario por su ID'
+        #swagger.parameters['id'] = {
+            in: 'path',
+            description: 'ID cadena de texto del comentario a buscar',
+            required: true,
+            type: 'string'
+        }
+        #swagger.responses[200] = {
+            description: 'Comentario encontrado exitosamente.'
+        }
+        #swagger.responses[404] = {
+            description: 'Comentario no encontrado.'
+        }
+    */
+
+
     try {
         const comentario = req.comentario
 
@@ -21,6 +46,27 @@ const obtenerComentario =  (req, res) => {
 }
 
 const crearComentario = async (req, res) => {
+    /* #swagger.tags = ['Comentarios']
+        #swagger.summary = 'Crea un nuevo comentario en el sistema'
+        #swagger.requestBody = {
+            required: true,
+            content: {
+                "application/json": {
+                    schema: {
+                        $ref: "#/components/schemas/ComentarioNuevo"
+                    }
+                }
+            }
+        }
+        #swagger.responses[201] = {
+            description: 'Comentario creado exitosamente.'
+        }
+        #swagger.responses[400] = {
+            description: 'El body no cumple con los requisitos.'
+        }
+    */
+
+    
     try {
         const comentario = await Comment.create({
             text: req.body.text,
@@ -35,6 +81,36 @@ const crearComentario = async (req, res) => {
 }
 
 const editarComentario = async (req, res) => {
+    /* #swagger.tags = ['Comentarios']
+        #swagger.summary = 'Editar los datos de un comentario por su ID'
+        #swagger.parameters['id'] = {
+            in: 'path',
+            description: 'ID cadena de texto del comentario a buscar',
+            required: true,
+            type: 'string'
+        }
+        #swagger.requestBody = {
+            required: true,
+            content: {
+                "application/json": {
+                    schema: {
+                        $ref: "#/components/schemas/ComentarioNuevo"
+                    }
+                }
+            }
+        }
+        #swagger.responses[200] = {
+            description: 'Comentario modificado con exito.'
+        }
+        #swagger.responses[400] = {
+            description: 'El body no cumple con los requisitos.'
+        }
+        #swagger.responses[404] = {
+            description: 'Comentario encontrado en la base de datos.'
+        }
+    */
+
+
     try {
         const {id} = req.comentario
 
@@ -47,7 +123,7 @@ const editarComentario = async (req, res) => {
             }
         })
 
-        res.status(200).json({ mensaje: `Mensaje actualizado con exito` })
+        res.status(200).json({ mensaje: `Comentario actualizado con exito` })
 
     } catch (error) {
         res.status(500).json({ error: `Hubo un error a la hora de editar el comentario: ${error.message}` })
@@ -55,6 +131,23 @@ const editarComentario = async (req, res) => {
 }
 
 const eliminarComentario = async (req, res) => {
+    /* #swagger.tags = ['Comentarios']
+        #swagger.summary = 'Elimina un comentario del sistema por su id'
+        #swagger.parameters['id'] = {
+            in: 'path',
+            description: 'ID cadena de texto del comentario a eliminar',
+            required: true,
+            type: 'string'
+        }
+        #swagger.responses[200] = {
+            description: 'Comentario eliminado exitosamente.'
+        }
+        #swagger.responses[404] = {
+            description: 'Comentario no encontrado.'
+        }
+    */
+    
+
     try {
         const {id} = req.comentario
 

@@ -35,6 +35,10 @@ const doc = {
                 $user_nickname: "user_123",
                 $text: "Este es el texto principal del post",
                 description: "Esta es una descripción opcional"
+            },
+            ComentarioNuevo: {
+                $text: "Este es un comentario",
+                $is_visible: true
             }
         }
     }
