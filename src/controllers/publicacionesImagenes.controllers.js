@@ -82,7 +82,7 @@ const obtenerImagenesDeUnPost = async (req, res) => {
         res.status(200).json(return_final)
 
     } catch (error) {
-        res.status(500).json({ error: `Hubo un error a la hora de crear la imagen: ${error.message}` })
+        res.status(500).json({ error: `Hubo un error a la hora de obtener las imagenes de un post: ${error.message}` })
     }
 }
 
@@ -122,7 +122,7 @@ const eliminarImagen = async (req, res) => {
         res.status(200).json("Imagen eliminada con exito")
 
     } catch (error) {
-        res.status(500).json({ error: `Hubo un error a la hora de crear la imagen: ${error.message}` })
+        res.status(500).json({ error: `Hubo un error a la hora de eliminar la imagen: ${error.message}` })
     }
 }
 

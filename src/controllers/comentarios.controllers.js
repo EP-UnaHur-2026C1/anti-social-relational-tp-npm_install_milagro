@@ -92,7 +92,7 @@ const obtenerComentariosDeUnPost = async (req, res) => {
             })
         )
 
-    res.status(201).json(return_final)
+    res.status(200).json(return_final)
 
     } catch (error) {
         res.status(500).json({ error: `Hubo un error a la hora de obtener comentarios de un post: ${error.message}` })
