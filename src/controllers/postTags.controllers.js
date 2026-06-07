@@ -2,28 +2,25 @@ const {Post, Tag} = require("../models")
 
 const agregarEtiqueta = async (req, res) => {
     /* #swagger.tags = ['Publicaciones']
-        #swagger.summary = 'Agrega una etiqueta por su id a una publicacion del sistema por su id'
-        #swagger.parameters['postId'] = {
-            in: 'path',
-            description: 'ID de la publicación',
-            required: true,
-            type: 'integer'
-        }
-        #swagger.parameters['tagId'] = {
-            in: 'path',
-            description: 'ID de la etiqueta',
-            required: true,
-            type: 'integer'
-        }
-        #swagger.responses[200] = {
-            description: 'Etiqueta asociada exitosamente.'
-        }
-        #swagger.responses[404] = {
-            description: 'Publicacion no encontrada.'
-        }
-        #swagger.responses[404] = {
-            description: 'Etiqueta no encontrada.'
-        }
+    #swagger.summary = 'Agregar etiqueta por id a una publicacion por su ID'
+    #swagger.parameters['postId'] = {
+        in: 'path',
+        description: 'ID de la publicacion',
+        required: true,
+        type: 'string'
+    }
+    #swagger.parameters['tagId'] = {
+        in: 'path',
+        description: 'ID de la etiqueta',
+        required: true,
+        type: 'integer'
+    }
+    #swagger.responses[200] = {
+        description: 'Etiqueta asociada exitosamente.'
+    }
+    #swagger.responses[404] = {
+        description: 'Publicacion o Etiqueta no encontrada.'
+    }
     */
 
     try {
@@ -43,19 +40,25 @@ const agregarEtiqueta = async (req, res) => {
 
 const obtenerEtiquetasDePost = async (req, res) => {
     /* #swagger.tags = ['Publicaciones']
-        #swagger.summary = 'Obtener todas las etiquetas de una publicacion del sistema por su id'
-        #swagger.parameters['postId'] = {
-            in: 'path',
-            description: 'ID de la publicación',
-            required: true,
-            type: 'integer'
-        }
-        #swagger.responses[200] = {
-            description: 'Etiquetas de la publicacion.'
-        }
-        #swagger.responses[404] = {
-            description: 'Publicacion no encontrada.'
-        }
+    #swagger.summary = 'Obtener etiquetas de una publicacion por su ID'
+    #swagger.parameters['postId'] = {
+        in: 'path',
+        description: 'ID de la publicacion',
+        required: true,
+        type: 'integer'
+    }
+    #swagger.parameters['tagId'] = {
+        in: 'path',
+        description: 'ID de la etiqueta',
+        required: true,
+        type: 'integer'
+    }
+    #swagger.responses[200] = {
+        description: 'Etiqueta asociada exitosamente.'
+    }
+    #swagger.responses[404] = {
+        description: 'Publicacion o Etiqueta no encontrada.'
+    }
     */
 
     try {

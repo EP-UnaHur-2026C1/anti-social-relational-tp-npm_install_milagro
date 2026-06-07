@@ -88,7 +88,7 @@ const editarEtiqueta = async (req, res) => {
             in: 'path',
             description: 'ID cadena de texto de la etiqueta a buscar',
             required: true,
-            type: 'string'
+            type: 'integer'
         }
         #swagger.requestBody = {
             required: true,
@@ -137,7 +137,7 @@ const eliminarEtiqueta = async (req, res) => {
             in: 'path',
             description: 'ID cadena de texto de la etiqueta a eliminar',
             required: true,
-            type: 'string'
+            type: 'integer'
         }
         #swagger.responses[200] = {
             description: 'Etiqueta eliminado exitosamente.'

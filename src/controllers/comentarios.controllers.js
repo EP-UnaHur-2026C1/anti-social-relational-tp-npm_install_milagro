@@ -24,7 +24,7 @@ const obtenerComentario =  (req, res) => {
             in: 'path',
             description: 'ID cadena de texto del comentario a buscar',
             required: true,
-            type: 'string'
+            type: 'integer'
         }
         #swagger.responses[200] = {
             description: 'Comentario encontrado exitosamente.'
@@ -95,7 +95,7 @@ const editarComentario = async (req, res) => {
             in: 'path',
             description: 'ID cadena de texto del comentario a buscar',
             required: true,
-            type: 'string'
+            type: 'integer'
         }
         #swagger.requestBody = {
             required: true,
@@ -145,7 +145,7 @@ const eliminarComentario = async (req, res) => {
             in: 'path',
             description: 'ID cadena de texto del comentario a eliminar',
             required: true,
-            type: 'string'
+            type: 'integer'
         }
         #swagger.responses[200] = {
             description: 'Comentario eliminado exitosamente.'

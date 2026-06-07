@@ -39,7 +39,7 @@ const obtenerPublicacion = async (req, res) => {
             in: 'path',
             description: 'ID cadena de texto de la publicacion a buscar',
             required: true,
-            type: 'string'
+            type: 'integer'
         }
         #swagger.responses[200] = {
             description: 'Publicacion encontrada exitosamente.'
@@ -104,7 +104,7 @@ const editarPublicacion = async (req, res) => {
             in: 'path',
             description: 'ID cadena de texto de la publicacion a buscar',
             required: true,
-            type: 'string'
+            type: 'integer'
         }
         #swagger.requestBody = {
             required: true,
@@ -154,7 +154,7 @@ const eliminarPublicacion = async (req, res) => {
             in: 'path',
             description: 'ID cadena de texto de la publicacion a eliminar',
             required: true,
-            type: 'string'
+            type: 'integer'
         }
         #swagger.responses[200] = {
             description: 'Publicacion eliminada exitosamente.'

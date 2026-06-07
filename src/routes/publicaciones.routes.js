@@ -10,7 +10,7 @@ const {
 } = require("../middlewares/publicaciones.middlewares")
 
 //midleware de realacion publicacion-etiquetas
-const validarPublicacionIdYEtiquetaId = require("../middlewares//postTags.midlewares")
+const validarPublicacionIdYEtiquetaId = require("../middlewares/postTags.midlewares")
 
 
 //midleware de comentario
