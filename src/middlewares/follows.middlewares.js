@@ -1,4 +1,4 @@
-const { follows } = require('../models');
+const { Follows } = require('../models');
 const { schemaFollows } = require('../schema/follows.schema');
 
 const validarFollow = (req, res, next) => {
@@ -12,17 +12,28 @@ const validarFollow = (req, res, next) => {
 }
 
 const validarFollow = (req, res, next) => {
-    const {nicknameSeguidor, nicknameSeguido} = req.params
+    const {followingUser, followedUser} = req.params
 
-    const seguidos = await follows.findOne({
+    const seguidos = await Follows.findOne({
         where: {
-            following_user_nickname : nicknameSeguidor
+            following_user_nickname : followingUser
         }
     })
+
+    const seguido = await  User.findByPk(followedUser, {
+        attributes: ["nickname"]
+    })
+
 
     if (!seguidos) {
         return res.status(404).json({
             mensaje: 'Ususarios Seguidos no encontrados o Usuario inexistente'
+        })
+    }
+
+    if (!seguido) {
+        return res.status(404).json({
+            mensaje: 'Usuario a seguir no encontrado'
         })
     }
 
