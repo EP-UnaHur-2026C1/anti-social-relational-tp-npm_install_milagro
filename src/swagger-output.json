@@ -198,7 +198,7 @@
             "description": "ID de la publicacion",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer"
             }
           },
           {
@@ -207,7 +207,7 @@
             "description": "ID de la etiqueta",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer"
             }
           }
         ],
@@ -252,11 +252,124 @@
           }
         ],
         "responses": {
-          "200": {
+          "201": {
             "description": "Etiqueta asociada exitosamente."
           },
           "404": {
             "description": "Publicacion o Etiqueta no encontrada."
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/publicaciones/{id}/imagenes": {
+      "get": {
+        "tags": [
+          "Publicaciones"
+        ],
+        "summary": "Obtener todas las imágenes de una publicación",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID de la publicación"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Imágenes retornadas exitosamente."
+          },
+          "404": {
+            "description": "Publicacion no encontrada."
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Publicaciones"
+        ],
+        "summary": "Agregar una imagen a una publicación",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID de la publicación"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Imagen agregada exitosamente."
+          },
+          "400": {
+            "description": "El parametro url de la imagen es incorrecto"
+          },
+          "404": {
+            "description": "Publicacion no encontrada."
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ImagenNueva"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/publicaciones/{postId}/imagenes/{imageId}": {
+      "delete": {
+        "tags": [
+          "Publicaciones"
+        ],
+        "summary": "Eliminar una imagen de una publicación",
+        "description": "",
+        "parameters": [
+          {
+            "name": "postId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID de la publicación"
+          },
+          {
+            "name": "imageId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID de la imagen"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Imagen eliminada exitosamente."
+          },
+          "404": {
+            "description": "Imagen no encontrada."
           },
           "500": {
             "description": "Internal Server Error"

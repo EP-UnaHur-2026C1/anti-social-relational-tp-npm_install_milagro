@@ -15,7 +15,7 @@ const agregarEtiqueta = async (req, res) => {
         required: true,
         type: 'integer'
     }
-    #swagger.responses[200] = {
+    #swagger.responses[201] = {
         description: 'Etiqueta asociada exitosamente.'
     }
     #swagger.responses[404] = {
