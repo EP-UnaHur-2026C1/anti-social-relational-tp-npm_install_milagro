@@ -1,6 +1,7 @@
 const { Router } = require('express')
 const publicacionesController = require('../controllers/publicaciones.controllers')
 const postTagsController = require('../controllers/postTags.controllers')
+const postImagesController = require("../controllers/publicacionesImagenes.controllers")
 const comentariosController = require("../controllers/comentarios.controllers")
 
 //midlewares de Publicacion
@@ -12,6 +13,11 @@ const {
 //midleware de realacion publicacion-etiquetas
 const validarPublicacionIdYEtiquetaId = require("../middlewares/postTags.midlewares")
 
+// midlewares de imagenes
+const {
+    validarImagen,
+    validarPublicacionEImagenId
+} = require("../middlewares/postImages.middlewares")
 
 //midleware de comentario
 const {
@@ -30,6 +36,10 @@ router.delete('/:id', validarPublicacionId, publicacionesController.eliminarPubl
 router.get('/:id/etiquetas', validarPublicacionId, postTagsController.obtenerEtiquetasDePost)
 router.post('/:postId/etiquetas/:tagId', validarPublicacionIdYEtiquetaId, postTagsController.agregarEtiqueta)
 
+// Relacion Post - Post_Image
+router.get('/:id/imagenes', validarPublicacionId, postImagesController.obtenerImagenesDeUnPost)
+router.post('/:id/imagenes', validarPublicacionId, validarImagen, postImagesController.agregarImagenAPost)
+router.delete('/:postId/imagenes/:imageId', validarPublicacionEImagenId, postImagesController.eliminarImagen);
 
 
 // Relacion Post - Comment

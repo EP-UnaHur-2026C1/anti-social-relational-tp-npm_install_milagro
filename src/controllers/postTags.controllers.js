@@ -29,7 +29,7 @@ const agregarEtiqueta = async (req, res) => {
 
         await post.addTag(tag)
 
-        res.json({
+        res.status(201).json({
             mensaje: 'Etiqueta asociada exitosamente'
         })
 
@@ -82,7 +82,7 @@ const obtenerEtiquetasDePost = async (req, res) => {
             etiquetas: etiquetasMapeadas
         }
 
-        res.json(return_final)
+        res.status(200).json(return_final)
 
     } catch (error) {
         res.status(500).json({ error: `Hubo un error a la hora de obtener etiquetas de un post por id: ${error.message}` })
