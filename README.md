@@ -1,3 +1,11 @@
+# Estrategias de Persistencia - Trabajo Práctico 1: Red anti-social
+### integrantes:
+ + Dylan Correa
+ + Agustin Fernandes
+ + Leonardo Murano
+ + Tomas Rosales
+ + Matias de la Rosa
+
 ## 💾 Arquitectura de Persistencia y Base de Datos
 
 Este sistema ha sido diseñado bajo un modelo de **persistencia agnóstica**, cumpliendo con el requisito de que el motor de base de datos pueda ser sustituido de forma transparente sin modificar la lógica de negocio de la aplicación.
