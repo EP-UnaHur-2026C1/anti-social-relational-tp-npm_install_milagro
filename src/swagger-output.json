@@ -905,6 +905,156 @@
           }
         }
       }
+    },
+    "/seguidos/": {
+      "get": {
+        "tags": [
+          "Follows"
+        ],
+        "summary": "Obtener todos los seguimientos registrados en el sistema",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Lista de todos los seguimientos obtenida exitosamente."
+          },
+          "500": {
+            "description": "Error interno del servidor."
+          }
+        }
+      }
+    },
+    "/seguidos/{user}": {
+      "get": {
+        "tags": [
+          "Follows"
+        ],
+        "summary": "Obtener lista de usuarios a los que sigue un usuario específico",
+        "description": "",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Nickname del usuario seguidor"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de seguidos obtenida exitosamente."
+          },
+          "404": {
+            "description": "Usuario inexistente."
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Follows"
+        ],
+        "summary": "Hacer que un usuario siga a otro",
+        "description": "",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Nickname del usuario que va a seguir a otro (seguidor)"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Seguimiento creado exitosamente."
+          },
+          "400": {
+            "description": "El body no cumple con los parámetros solicitados."
+          },
+          "404": {
+            "description": "Usuario a seguir inexistente."
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "followed_user_nickname": {
+                    "type": "string",
+                    "example": "amigo123"
+                  }
+                },
+                "required": [
+                  "followed_user_nickname"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Follows"
+        ],
+        "summary": "Dejar de seguir a un usuario",
+        "description": "",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Nickname del usuario que quiere dejar de seguir a otro"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Seguimiento eliminado exitosamente."
+          },
+          "400": {
+            "description": "No existe el seguimiento para eliminar."
+          },
+          "404": {
+            "description": "Usuario a seguir inexistente."
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "followed_user_nickname": {
+                    "type": "string",
+                    "example": "amigo123"
+                  }
+                },
+                "required": [
+                  "followed_user_nickname"
+                ]
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
