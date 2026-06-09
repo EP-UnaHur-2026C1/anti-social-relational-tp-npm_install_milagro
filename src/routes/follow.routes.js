@@ -2,16 +2,17 @@ const { Router } = require('express')
 const followController = require('../controllers/follow.controllers')
 
  const {
-    validarFollow,
-    validarUser,
-    validarFollowingUser,
-    validarFollowedUser
+    validarEsquemaFollow,
+    validarUsuarioExistente,
+    validarFollowedUser,
+    validarConexionExistente,
+    validarConexionInexistente
 } = require("../middlewares/follows.middlewares")
 
 const router = Router()
 router.get('/',followController.obtenerFollows)
-router.get('/:user',validarUser, followController.obtenerFollowsDeUser)
-router.post('/',validarFollow, validarFollowingUser, validarFollowedUser, followController.crearFollow)
-router.delete('/',validarFollow, validarFollowingUser, validarFollowedUser, followController.eliminarFollow)
+router.get('/:user',validarUsuarioExistente, followController.obtenerFollowsDeUser)
+router.post('/:user',validarUsuarioExistente, validarEsquemaFollow, validarFollowedUser, validarConexionExistente, followController.crearFollow)
+router.delete('/:user',validarUsuarioExistente, validarEsquemaFollow, validarFollowedUser, validarConexionInexistente, followController.eliminarFollow)
 
 module.exports = router

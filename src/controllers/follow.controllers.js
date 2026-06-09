@@ -46,8 +46,8 @@ const crearFollow = async (req, res) => {
     try {
 
         const seguido = await Follows.create({
-            following_user_nickname: req.body.followingUserNickname,
-            followed_user_nickname: req.body.followedUserNicname
+            following_user_nickname: req.user,
+            followed_user_nickname: req.followed_user_nickname
         })
 
         res.status(201).json(seguido)
@@ -62,8 +62,8 @@ const eliminarFollow = async (req, res) => {
     try {
         await Follows.destroy({
             where: {
-                following_user_nickname: req.body.followingUserNickname,
-                followed_user_nickname: req.body.followedUserNickname
+                following_user_nickname: req.user,
+                followed_user_nickname: req.followed_user_nickname
             }
         })
         res.status(201).json("seguimiento eliminado")
