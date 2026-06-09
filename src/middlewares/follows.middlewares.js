@@ -12,18 +12,20 @@ const validarFollow = (req, res, next) => {
     next()
 }
 
-const validarUser = async (req,res,next) => {
+const validarUser = async (req, res, next) => {
     const { user } = req.params
 
-    const following = await  User.findByPk(user, {
+    const seguido = await User.findByPk(user, {
         attributes: ["nickname"]
     })
 
-    if (!following) {
+    if (!seguido) {
         return res.status(404).json({
             mensaje: 'Usuario inexistente'
         })
     }
+    
+    req.user = user
 
     next()
 }
