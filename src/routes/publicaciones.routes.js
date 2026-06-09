@@ -31,11 +31,9 @@ const router = Router()
 
 router.get('/', publicacionesController.obtenerPublicaciones)
 router.get('/:id', validarPublicacionId, publicacionesController.obtenerPublicacion)
-<<<<<<< HEAD
 router.post('/', validarPublicacion, validarUsuarioExistenteEnBody, publicacionesController.crearPublicacion)
-=======
 router.post('/', validarUsuarioExistenteEnBody, validarPublicacion, publicacionesController.crearPublicacion)
->>>>>>> main
+
 router.put('/:id', validarPublicacionId, validarPublicacion, publicacionesController.editarPublicacion)
 router.delete('/:id', validarPublicacionId, publicacionesController.eliminarPublicacion)
 
