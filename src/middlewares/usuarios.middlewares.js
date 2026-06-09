@@ -30,7 +30,21 @@ const validarUsuarioId = async (req, res, next) => {
     next()
 }
 
+const validarUsuarioExistenteEnBody = async (req, res, next) => {
+    const { user_nickname } = req.body;
+    
+    const usuario = await User.findByPk(user_nickname);
+    
+    if (!usuario) {
+        return res.status(404).json({
+            mensaje: 'No se puede crear la publicación: el usuario no existe en la base de datos'
+        });
+    }
+    next();
+};
+
 module.exports = {
     validarUsuarioId,
-    validarUsuarioSchema
+    validarUsuarioSchema,
+    validarUsuarioExistenteEnBody
 }

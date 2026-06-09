@@ -10,14 +10,15 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Follows.belongsToMany(models.User, {
-        foreingKey: "nickname",
-        as: "following_user_nickname"
-      }),
-      Follows.belongsToMany(models.User, {
-        foreingKey: "nickname",
-        as: "followed_user_nickname"
-      })
+      Follows.belongsTo(models.User, {
+        foreignKey: "following_user_nickname",
+        as: "followerUser"
+      });
+
+      Follows.belongsTo(models.User, {
+        foreignKey: "followed_user_nickname",
+        as: "followedUser"
+      });
     }
   }
   Follows.init({

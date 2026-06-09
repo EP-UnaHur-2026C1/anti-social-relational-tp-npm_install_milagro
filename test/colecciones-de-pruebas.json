@@ -1,0 +1,580 @@
+{
+	"info": {
+		"name": "TP-AntiSocial-Red",
+		"description": "Colección de pruebas para la API RESTful de Estrategias de Persistencia. (Excluye endpoints de Follows)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Usuarios",
+			"item": [
+				{
+					"name": "Obtener Usuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/usuarios",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					}
+				},
+				{
+					"name": "Crear Usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nickname\": \"tizi\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/usuarios",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					}
+				},
+				{
+					"name": "Obtener Usuario por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/usuarios/tizi",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"usuarios",
+								"tizi"
+							]
+						}
+					}
+				},
+				{
+					"name": "Editar Usuario",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nickname\": \"tizi_modificado\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/usuarios/tizi",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"usuarios",
+								"tizi"
+							]
+						}
+					}
+				},
+				{
+					"name": "Eliminar Usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/usuarios/tizi_modificado",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"usuarios",
+								"tizi_modificado"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "2. Etiquetas",
+			"item": [
+				{
+					"name": "Obtener Etiquetas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/etiquetas",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"etiquetas"
+							]
+						}
+					}
+				},
+				{
+					"name": "Crear Etiqueta",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Tecnologia\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/etiquetas",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"etiquetas"
+							]
+						}
+					}
+				},
+				{
+					"name": "Obtener Etiqueta por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/etiquetas/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"etiquetas",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Editar Etiqueta",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Programacion\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/etiquetas/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"etiquetas",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Eliminar Etiqueta",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/etiquetas/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"etiquetas",
+								"1"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "3. Publicaciones",
+			"item": [
+				{
+					"name": "Obtener Publicaciones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/publicaciones",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"publicaciones"
+							]
+						}
+					}
+				},
+				{
+					"name": "Crear Publicacion",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_nickname\": \"tizi\",\n    \"text\": \"Este es mi primer post en la red\",\n    \"description\": \"Probando la API en el TP\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/publicaciones",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"publicaciones"
+							]
+						}
+					}
+				},
+				{
+					"name": "Obtener Publicacion por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/publicaciones/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"publicaciones",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Editar Publicacion",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_nickname\": \"tizi\",\n    \"text\": \"Post editado exitosamente\",\n    \"description\": \"Nueva descripcion\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/publicaciones/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"publicaciones",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Asociar Etiqueta a Publicacion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/publicaciones/1/etiquetas/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"publicaciones",
+								"1",
+								"etiquetas",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Obtener Etiquetas de Publicacion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/publicaciones/1/etiquetas",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"publicaciones",
+								"1",
+								"etiquetas"
+							]
+						}
+					}
+				},
+				{
+					"name": "Agregar Imagen a Publicacion",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"url\": \"https://ejemplo.com/imagen.png\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/publicaciones/1/imagenes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"publicaciones",
+								"1",
+								"imagenes"
+							]
+						}
+					}
+				},
+				{
+					"name": "Obtener Imagenes de Publicacion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/publicaciones/1/imagenes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"publicaciones",
+								"1",
+								"imagenes"
+							]
+						}
+					}
+				},
+				{
+					"name": "Eliminar Imagen de Publicacion",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/publicaciones/1/imagenes/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"publicaciones",
+								"1",
+								"imagenes",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Crear Comentario en Publicacion",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"text\": \"Este es un comentario de prueba\",\n    \"is_visible\": true,\n    \"user_nickname\": \"tizi\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/publicaciones/1/comentarios",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"publicaciones",
+								"1",
+								"comentarios"
+							]
+						}
+					}
+				},
+				{
+					"name": "Obtener Comentarios de Publicacion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/publicaciones/1/comentarios",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"publicaciones",
+								"1",
+								"comentarios"
+							]
+						}
+					}
+				},
+				{
+					"name": "Eliminar Comentario de Publicacion",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/publicaciones/1/comentarios/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"publicaciones",
+								"1",
+								"comentarios",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Eliminar Publicacion",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/publicaciones/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"publicaciones",
+								"1"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "4. Comentarios",
+			"item": [
+				{
+					"name": "Obtener Todos los Comentarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/comentarios",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"comentarios"
+							]
+						}
+					}
+				},
+				{
+					"name": "Obtener Comentario por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/comentarios/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"comentarios",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Editar Comentario",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"text\": \"Comentario oculto por admin\",\n    \"is_visible\": false,\n    \"user_nickname\": \"tizi\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/comentarios/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"comentarios",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Eliminar Comentario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/comentarios/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"comentarios",
+								"1"
+							]
+						}
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}

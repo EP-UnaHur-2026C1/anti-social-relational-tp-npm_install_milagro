@@ -58,6 +58,9 @@
           "400": {
             "description": "El body no esta completo."
           },
+          "404": {
+            "description": "No se puede crear la publicación: el usuario no existe en la base de datos"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -398,9 +401,6 @@
         "responses": {
           "200": {
             "description": "Comentarios retornados exitosamente."
-          },
-          "201": {
-            "description": "Created"
           },
           "404": {
             "description": "Publicación no encontrada."
@@ -848,7 +848,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "ID cadena de texto del comentario a buscar"
+            "description": "ID del comentario a buscar"
           }
         ],
         "responses": {

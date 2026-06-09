@@ -25,11 +25,13 @@ const {
     validarPublicacionYComentarioId
 } = require("../middlewares/comentarios.middlewares")
 
+const { validarUsuarioExistenteEnBody } = require("../middlewares/usuarios.middlewares");
+
 const router = Router()
 
 router.get('/', publicacionesController.obtenerPublicaciones)
 router.get('/:id', validarPublicacionId, publicacionesController.obtenerPublicacion)
-router.post('/', validarPublicacion, publicacionesController.crearPublicacion)
+router.post('/', validarUsuarioExistenteEnBody, validarPublicacion, publicacionesController.crearPublicacion)
 router.put('/:id', validarPublicacionId, validarPublicacion, publicacionesController.editarPublicacion)
 router.delete('/:id', validarPublicacionId, publicacionesController.eliminarPublicacion)
 
