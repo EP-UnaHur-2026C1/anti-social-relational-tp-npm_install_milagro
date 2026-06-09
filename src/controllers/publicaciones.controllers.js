@@ -79,6 +79,9 @@ const crearPublicacion = async (req, res) => {
         #swagger.responses[400] = {
             description: 'El body no esta completo.'
         }
+        #swagger.responses[404] = {
+            description: 'No se puede crear la publicación: el usuario no existe en la base de datos'
+        }
     */
 
 
