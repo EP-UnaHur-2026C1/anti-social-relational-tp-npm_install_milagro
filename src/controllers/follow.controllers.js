@@ -73,5 +73,5 @@ const eliminarFollow = async (req, res) => {
 }
 
 module.exports = {
-    crearFollow,obtenerFollows ,eliminarFollow
+    crearFollow,obtenerFollows ,eliminarFollow, obtenerFollowsDeUser
 }

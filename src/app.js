@@ -21,7 +21,7 @@ app.use('/publicaciones', routerPublicaciones)
 app.use('/usuarios', routerUsuarios)
 app.use('/etiquetas', routerEtiqueta)
 app.use('/comentarios', routerComentarios)
-app.use('/seguidos/', routerFollows)
+app.use('/seguidos', routerFollows)
 
 //Documentacion
 app.use('/docs',  swaggerUI.serve, swaggerUI.setup(swaggerFile))

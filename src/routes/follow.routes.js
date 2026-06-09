@@ -10,7 +10,7 @@ const {
 
 const router = Router()
 router.get('/',followController.obtenerFollows)
-//router.get('/:id',validarUser, followController.obtenerFollowsDeUser)
+router.get('/:user',validarUser, followController.obtenerFollowsDeUser)
 router.post('/',validarFollow, validarFollowingUser, validarFollowedUser, followController.crearFollow)
 router.delete('/',validarFollow, validarFollowingUser, validarFollowedUser, followController.eliminarFollow)
 
