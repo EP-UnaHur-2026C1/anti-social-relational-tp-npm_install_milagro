@@ -31,7 +31,11 @@ const router = Router()
 
 router.get('/', publicacionesController.obtenerPublicaciones)
 router.get('/:id', validarPublicacionId, publicacionesController.obtenerPublicacion)
+<<<<<<< HEAD
+router.post('/', validarPublicacion, validarUsuarioExistenteEnBody, publicacionesController.crearPublicacion)
+=======
 router.post('/', validarUsuarioExistenteEnBody, validarPublicacion, publicacionesController.crearPublicacion)
+>>>>>>> main
 router.put('/:id', validarPublicacionId, validarPublicacion, publicacionesController.editarPublicacion)
 router.delete('/:id', validarPublicacionId, publicacionesController.eliminarPublicacion)
 
@@ -47,7 +51,7 @@ router.delete('/:postId/imagenes/:imageId', validarPublicacionEImagenId, postIma
 
 // Relacion Post - Comment
 router.get('/:id/comentarios', validarPublicacionId, comentariosController.obtenerComentariosDeUnPost)
-router.post('/:id/comentarios', validarPublicacionId, validarComentario, comentariosController.crearComentarioEnPost)
+router.post('/:id/comentarios', validarPublicacionId, validarComentario, validarUsuarioExistenteEnBody, comentariosController.crearComentarioEnPost)
 router.delete('/:postId/comentarios/:comentarioId',validarPublicacionYComentarioId, comentariosController.eliminarComentarioDeUnPost);
 
 module.exports = router

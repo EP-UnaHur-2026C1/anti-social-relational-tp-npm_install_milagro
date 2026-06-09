@@ -10,6 +10,7 @@ const routerPublicaciones = require('./routes/publicaciones.routes')
 const routerUsuarios = require('./routes/usuarios.routes')
 const routerEtiqueta = require('./routes/etiquetas.routes')
 const routerComentarios = require('./routes/comentarios.routes')
+const routerFollows = require('./routes/follow.routes')
 
 const PORT = process.env.PORT || 3000
 
@@ -20,6 +21,7 @@ app.use('/publicaciones', routerPublicaciones)
 app.use('/usuarios', routerUsuarios)
 app.use('/etiquetas', routerEtiqueta)
 app.use('/comentarios', routerComentarios)
+app.use('/seguidos', routerFollows)
 
 //Documentacion
 app.use('/docs',  swaggerUI.serve, swaggerUI.setup(swaggerFile))

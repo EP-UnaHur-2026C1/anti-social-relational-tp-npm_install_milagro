@@ -1,7 +1,7 @@
 const { Follows, User } = require('../models');
-const { schemaFollows } = require('../schema/follows.schema');
+const  schemaFollows  = require('../schema/follows.schema');
 
-const validarFollow = (req, res, next) => {
+const validarEsquemaFollow = (req, res, next) => {
 
     const {error} = schemaFollows.validate(req.body)
 
@@ -12,36 +12,28 @@ const validarFollow = (req, res, next) => {
     next()
 }
 
-const validarFollowingUser = async (req, res, next) => {
-    const nickSeguidor = req.params.user
+const validarUsuarioExistente = async (req, res, next) => {
+    const { user } = req.params
 
-
-    const seguidos = await Follows.findOne({
-        where: {
-            following_user_nickname : nickSeguidor
-        }
-    })
-
-    const seguidor = await  User.findByPk(nickSeguidor, {
+    const seguido = await User.findByPk(user, {
         attributes: ["nickname"]
     })
 
-
-    if (!seguidor || !seguidos) {
+    if (!seguido) {
         return res.status(404).json({
-            mensaje: 'Ususarios Seguidos no encontrados o Usuario inexistente'
+            mensaje: 'Usuario inexistente'
         })
     }
     
-    req.nicknameSeguidor = nickSeguidor
+    req.user = user
 
     next()
 }
 
 const validarFollowedUser = async (req, res, next) => {
-    const {followedUser} = req.params
+    const {followed_user_nickname } = req.body
 
-    const seguido = await User.findByPk(followedUser, {
+    const seguido = await User.findByPk(followed_user_nickname, {
         attributes: ["nickname"]
     })
 
@@ -51,14 +43,54 @@ const validarFollowedUser = async (req, res, next) => {
         })
     }
     
-    req.nicknameSeguido = followedUser
+    req.followed_user_nickname = followed_user_nickname
 
     next()
 }
 
+const validarConexionExistente = async (req, res, next) => {
+    const { followed_user_nickname } = req.body;
+    const following_user_nickname = req.user;
+
+    const conexion = await Follows.findOne({
+        where: {
+            following_user_nickname,
+            followed_user_nickname
+        }
+    });
+
+    if (conexion) {
+        return res.status(400).json({ mensaje: "El seguimiento ya existe." });
+    }
+    else {
+        next();
+    }
+};
+
+
+const validarConexionInexistente = async (req, res, next) => {
+    const { followed_user_nickname } = req.body;
+    const following_user_nickname = req.user;
+
+    const conexion = await Follows.findOne({
+        where: {
+            following_user_nickname,
+            followed_user_nickname
+        }
+    });
+
+    if (!conexion) {
+        return res.status(400).json({ mensaje: "No existe el seguimiento para eliminar" });
+    }
+    else {
+        next();
+    }
+};
 
 module.exports = {
-    validarFollow,
-    validarFollowingUser,
-    validarFollowedUser
+    validarEsquemaFollow,
+    validarUsuarioExistente,
+    validarFollowedUser,
+    validarConexionExistente,
+    validarConexionInexistente
 }

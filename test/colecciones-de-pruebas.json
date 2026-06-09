@@ -1,7 +1,7 @@
 {
 	"info": {
-		"name": "TP-AntiSocial-Red",
-		"description": "Colección de pruebas para la API RESTful de Estrategias de Persistencia. (Excluye endpoints de Follows)",
+		"name": "TP-AntiSocial-Red (Final)",
+		"description": "Colección completa de pruebas para la API RESTful, incluyendo el sistema de seguidores (Follows).",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -563,6 +563,96 @@
 							"path": [
 								"comentarios",
 								"1"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "5. Seguidores (Follows)",
+			"item": [
+				{
+					"name": "Obtener Todos los Follows",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/seguidos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"seguidos"
+							]
+						}
+					}
+				},
+				{
+					"name": "Obtener Follows de Usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/seguidos/tizi",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"seguidos",
+								"tizi"
+							]
+						}
+					}
+				},
+				{
+					"name": "Seguir a un Usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"followed_user_nickname\": \"amigo123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/seguidos/tizi",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"seguidos",
+								"tizi"
+							]
+						}
+					}
+				},
+				{
+					"name": "Dejar de Seguir a un Usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"followed_user_nickname\": \"amigo123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/seguidos/tizi",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"seguidos",
+								"tizi"
 							]
 						}
 					}
